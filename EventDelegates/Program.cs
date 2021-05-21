@@ -52,22 +52,22 @@ namespace EventDelegates
         }
 
         // this is a dynamic method
-        static void DoWork(WorkPerformedHandler handler)
+        static void DoWork(object sender,WorkPerformedHandler handler)
         { 
-            handler(5);
+            handler(sender,5);
         }
          
-        static void WorkPerformed1(int hours)
+        static void WorkPerformed1(object sender,int hours)
         {
             Console.WriteLine($"Work performed is {hours} Hours in WorkPerformed1");
         }
 
-        static void WorkPerformed2(int hours)
+        static void WorkPerformed2(object sender,int hours)
         {
             Console.WriteLine($"Work performed is {hours} Hours in WorkPerformed2");
         }
         
-        static void WorkPerformed3(int hours)
+        static void WorkPerformed3(object sender,int hours)
         {
             Console.WriteLine($"Work performed is {hours} Hours in WorkPerformed3");
         }

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace EventDelegates
 {
-    public delegate void WorkPerformedHandler (int hours);
+    public delegate void WorkPerformedHandler (object sender,int hours);
 
     class Worker
     {
         public event WorkPerformedHandler WorkPerformed;
         //user custom event args with a class that extent the EventArgs class with EventHandler<T>
+        // this one actually the exact same as the above (WorkPerformedHandler) but without a delegate so behind the scene the compiler creates the delegate itself
         public event EventHandler<WorkPerformedEventArgs> WorkCompleted;
         public void DoWork(int hours)
         {
@@ -26,7 +27,7 @@ namespace EventDelegates
 
         protected virtual void OnWorkPerformed(int hours)
         {
-            WorkPerformed?.Invoke(hours);
+            WorkPerformed?.Invoke(this,hours);
         }
 
         protected virtual void OnWorkCompleted(int  hours)

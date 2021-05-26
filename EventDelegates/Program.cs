@@ -27,12 +27,13 @@ namespace EventDelegates
             WorkPerformedHandler handler = WorkPerformed1;
             WorkPerformedHandler handler2 = WorkPerformed2;
             WorkPerformedHandler handler3 = WorkPerformed3;
-            handler += handler2 + handler3; // handler 2 will not invoke the invocatoin list from the below code.
+            handler += handler2 + handler3; 
 
             handler2 += handler3 + handler2;
             handler2 += handler3;
 
-            //handler += handler2 + handler3; handler 2 will invoke all hanler 2 from the above
+            //handler += handler2 + handler3; handler 2 will not invoke all hanler 2 from the above as its already filled changing handler2 will not 
+            //effect handler
 
             handler3 += handler;
 
